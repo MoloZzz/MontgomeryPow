@@ -1,8 +1,19 @@
 #include <iostream>
 #include <cassert>
 
+/**
 
-// Розрахунок довжини числа у системі числення b
+@file montgomery.cpp
+@brief Implementation of Montgomery modular exponentiation algorithm
+*/
+/**
+
+@brief Calculates the length of a number in a given base
+@tparam T1 Type of input number and base
+@param n Input number
+@param b Base
+@return Length of the number
+*/
 template <typename T1>
 T1 number_length(T1 n, T1 b) {
     int len = 0;
@@ -12,8 +23,14 @@ T1 number_length(T1 n, T1 b) {
     }
     return len;
 }
+/**
 
-// Розрахунок k, такого що b^k > n
+@brief Calculates k such that b^k > n
+@tparam T1 Type of input number and base
+@param n Input number
+@param b Base
+@return Value of k
+*/
 template <typename T1>
 T1 get_k(T1 n, T1 b) {
     T1 k = 0;
@@ -23,8 +40,13 @@ T1 get_k(T1 n, T1 b) {
     }
     return k;
 }
+/**
 
-// Обчислення результуючого множника для Монтгомері
+@brief Computes the resulting multiplier for Montgomery algorithm
+@tparam T1 Type of input number and base
+@param n Input number
+@return Value of t
+*/
 template <typename T1>
 T1 get_t(T1 n) {
     T1 t = 1;
@@ -35,8 +57,20 @@ T1 get_t(T1 n) {
     }
     return t;
 }
+/**
 
-// Функція піднесення в степінь Монтгомері
+@brief Computes the modular exponentiation of a number using Montgomery algorithm
+
+@tparam T1 Type of input number and base
+
+@param a Base
+
+@param b Exponent
+
+@param n Modulus
+
+@return The result of a^b mod n
+*/
 template <typename T1>
 T1 fpow(T1 a, T1 b, T1 n) {
 
