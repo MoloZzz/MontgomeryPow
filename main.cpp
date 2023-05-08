@@ -1,6 +1,6 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <iostream>
-#include <cassert>
-
+#include "doctests\doctest\doctest.h"
 /**
 
 @file montgomery.cpp
@@ -94,6 +94,22 @@ T1 fpow(T1 a, T1 b, T1 n) {
     return (r * 1LL * t) % n;
 }
 
+TEST_CASE("fpow - exponentiation of integers") {
+// Testing basic cases
+CHECK(fpow(2, 10, 100) == 24);
+CHECK(fpow(3, 5, 13) == 9);
+
+// Testing edge cases
+CHECK(fpow(12345LL, 67890LL, 999999LL) == 936090LL);
+CHECK(fpow(987654321LL, 123456789LL, 123456789LL) == 27559359);
+}
+
+
+
+
+
+/*
+
 int main() {
     int a = 125;
     int b = 16;
@@ -112,4 +128,4 @@ int main() {
 
 
     return 0;
-}
+}*/
